@@ -82,7 +82,10 @@ class Adherent
      * The user associated to this adherent profile.
      * @var User
      *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\User", mappedBy="profile", orphanRemoval=true)
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\User", mappedBy="profile",
+     * cascade={"persist", "remove", "refresh"},
+     * orphanRemoval=true)
+
      */
     private $user;
 
@@ -208,7 +211,8 @@ class Adherent
         $this->email = $email;
 
         if ($this->user && $this->user->GetEmail() !== $email) {
-            $this->user->setEmail();
+//FIXME : Not working for now            
+//$this->user->setEmail($email);
         }
 
         return $this;
