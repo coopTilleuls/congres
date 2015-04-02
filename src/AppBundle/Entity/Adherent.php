@@ -63,6 +63,13 @@ class Adherent
     private $status;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="departement", type="string", length=100, nullable=true)
+     */
+    private $departement;
+
+    /**
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\OneToMany(targetEntity="AdherentResponsability", mappedBy="adherent", orphanRemoval=true, cascade={"persist"})
@@ -263,6 +270,29 @@ class Adherent
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Set departement
+     *
+     * @param string $departement
+     * @return Adherent
+     */
+    public function setDepartement($departement)
+    {
+        $this->departement = $departement;
+
+        return $this;
+    }
+
+    /**
+     * Get departement
+     *
+     * @return string 
+     */
+    public function getDepartement()
+    {
+        return $this->departement;
     }
 
     /**
