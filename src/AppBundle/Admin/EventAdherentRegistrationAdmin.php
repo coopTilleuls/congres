@@ -71,6 +71,7 @@ class EventAdherentRegistrationAdmin extends Admin
             ->add('adherent.firstname', NULL, array('label' => 'Prénom'))
             ->add('adherent.lastname', NULL, array('label' => 'Nom'))
             //->add('adherent.email', NULL, array('label' => 'Courriel'))
+            ->add('adherent.departement',null, array('label' => 'Département'))
             ->add('adherent.status',null, array('label' => 'Statut'))
             ->add('adherent.responsabilities', 'sonata_type_collection', array('associated_property' => 'responsability', 'label' => 'Responsabilités au sein du parti'))
             ->add('role', null, array('label' => 'Inscrit en tant que'))
