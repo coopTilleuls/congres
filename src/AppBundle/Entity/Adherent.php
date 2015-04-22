@@ -63,12 +63,12 @@ class Adherent
     private $status;
 
     /**
-     * @var string
+     * @var int$
      *
-     * @ORM\Column(name="departement", type="string", length=100, nullable=true)
+     * @ORM\Column(name="departement", type="integer")
      */
+    // FIXME : Remove this field when organs will be imported
     private $departement;
-
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
@@ -104,6 +104,7 @@ class Adherent
         // Initialize collection
         $this->responsabilities = new \Doctrine\Common\Collections\ArrayCollection();
         $this->status = self::STATUS_NEW;
+        $this->departement = 0;
     }
 
     /**
@@ -273,29 +274,6 @@ class Adherent
     }
 
     /**
-     * Set departement
-     *
-     * @param string $departement
-     * @return Adherent
-     */
-    public function setDepartement($departement)
-    {
-        $this->departement = $departement;
-
-        return $this;
-    }
-
-    /**
-     * Get departement
-     *
-     * @return string 
-     */
-    public function getDepartement()
-    {
-        return $this->departement;
-    }
-
-    /**
      * Get responsabilities
      *
      * @return \Doctrine\Common\Collections\Collection
@@ -381,5 +359,28 @@ class Adherent
         $this->user = $user;
 
         return $this;
+    }
+
+    /**
+     * Set departement
+     *
+     * @param integer $departement
+     * @return Adherent
+     */
+    public function setDepartement($departement)
+    {
+        $this->departement = $departement;
+
+        return $this;
+    }
+
+    /**
+     * Get departement
+     *
+     * @return integer 
+     */
+    public function getDepartement()
+    {
+        return $this->departement;
     }
 }
