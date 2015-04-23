@@ -33,7 +33,7 @@ class AdherentResponsability
     /**
      * @var \stdClass
      *
-     * @ORM\ManyToOne(targetEntity="Responsability", inversedBy="adherentResponsabilities")
+     * @ORM\ManyToOne(targetEntity="Responsability", inversedBy="adherentResponsabilities", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $responsability;
@@ -42,7 +42,7 @@ class AdherentResponsability
      * @var \stdClass
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Organ\Organ",
-     * inversedBy="designatedParticipants")
+     * inversedBy="designatedParticipants", cascade={"persist"})
      */
     private $designatedByOrgan;
 
@@ -129,6 +129,29 @@ class AdherentResponsability
     public function getResponsability()
     {
         return $this->responsability;
+    }
+
+    /**
+     * Set designatedByOrgan
+     *
+     * @param \Organ $designatedByOrgan
+     * @return AdherentResponsability
+     */
+    public function setDesignatedByOrgan($designatedByOrgan)
+    {
+        $this->designatedByOrgan = $designatedByOrgan;
+
+        return $this;
+    }
+
+    /**
+     * Get designatedByOrgan
+     *
+     * @return \Organ 
+     */
+    public function getDesignatedByOrgan()
+    {
+        return $this->designatedByOrgan;
     }
 
     /**
